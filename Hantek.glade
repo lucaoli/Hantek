@@ -1,0 +1,1602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
+<!--
+    Hantek 2D72 handheld oscillosope tool for linux
+    Copyright (C) 2021 Luca Oliva
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkImage" id="Start1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="stock">gtk-media-play</property>
+  </object>
+  <object class="GtkImage" id="Start2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="stock">gtk-media-play</property>
+  </object>
+  <object class="GtkImage" id="Stop1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="stock">gtk-media-stop</property>
+  </object>
+  <object class="GtkImage" id="Stop2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="stock">gtk-media-stop</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_amp_adj">
+    <property name="upper">2.5</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_freq_adj">
+    <property name="lower">1</property>
+    <property name="upper">5000000</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_off_adj">
+    <property name="lower">-2.5</property>
+    <property name="upper">2.5</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_ramp_duty">
+    <property name="upper">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_square_duty">
+    <property name="upper">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_trap_fall_duty">
+    <property name="upper">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_trap_high_duty">
+    <property name="upper">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="awg_trap_rise_duty">
+    <property name="upper">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="capture_samples_adj">
+    <property name="lower">1</property>
+    <property name="upper">3000</property>
+    <property name="value">3000</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">100</property>
+  </object>
+  <object class="GtkAdjustment" id="channel_offset_adj_ch1">
+    <property name="upper">200</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="channel_offset_adj_ch2">
+    <property name="upper">200</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkListStore" id="liststore_1000x">
+    <columns>
+      <!-- column-name description -->
+      <column type="gchararray"/>
+      <!-- column-name realval -->
+      <column type="gfloat"/>
+      <!-- column-name val -->
+      <column type="guint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">10V</col>
+        <col id="1">0.10000000149011612</col>
+        <col id="2">0</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20V</col>
+        <col id="1">0.20000000298023224</col>
+        <col id="2">1</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50V</col>
+        <col id="1">0.5</col>
+        <col id="2">2</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100V</col>
+        <col id="1">1</col>
+        <col id="2">3</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200V</col>
+        <col id="1">2</col>
+        <col id="2">4</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500V</col>
+        <col id="1">5</col>
+        <col id="2">5</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1KV</col>
+        <col id="1">10</col>
+        <col id="2">6</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2KV</col>
+        <col id="1">20</col>
+        <col id="2">7</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">5KV</col>
+        <col id="1">50</col>
+        <col id="2">8</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10KV</col>
+        <col id="1">100</col>
+        <col id="2">9</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore_100x">
+    <columns>
+      <!-- column-name description -->
+      <column type="gchararray"/>
+      <!-- column-name realval -->
+      <column type="gfloat"/>
+      <!-- column-name val -->
+      <column type="guint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">1V</col>
+        <col id="1">0.10000000149011612</col>
+        <col id="2">0</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2V</col>
+        <col id="1">0.20000000298023224</col>
+        <col id="2">1</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">5V</col>
+        <col id="1">0.5</col>
+        <col id="2">2</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10V</col>
+        <col id="1">1</col>
+        <col id="2">3</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20V</col>
+        <col id="1">2</col>
+        <col id="2">4</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50V</col>
+        <col id="1">5</col>
+        <col id="2">5</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100V</col>
+        <col id="1">10</col>
+        <col id="2">6</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200V</col>
+        <col id="1">20</col>
+        <col id="2">7</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500V</col>
+        <col id="1">50</col>
+        <col id="2">8</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1KV</col>
+        <col id="1">100</col>
+        <col id="2">9</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore_10x">
+    <columns>
+      <!-- column-name description -->
+      <column type="gchararray"/>
+      <!-- column-name realval -->
+      <column type="gfloat"/>
+      <!-- column-name val -->
+      <column type="guint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">100mV</col>
+        <col id="1">0.10000000149011612</col>
+        <col id="2">0</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200mV</col>
+        <col id="1">0.20000000298023224</col>
+        <col id="2">1</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500mV</col>
+        <col id="1">0.5</col>
+        <col id="2">2</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1V</col>
+        <col id="1">1</col>
+        <col id="2">3</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2V</col>
+        <col id="1">2</col>
+        <col id="2">4</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">5V</col>
+        <col id="1">5</col>
+        <col id="2">5</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10V</col>
+        <col id="1">10</col>
+        <col id="2">6</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20V</col>
+        <col id="1">20</col>
+        <col id="2">7</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50V</col>
+        <col id="1">50</col>
+        <col id="2">8</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100V</col>
+        <col id="1">100</col>
+        <col id="2">9</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore_1x">
+    <columns>
+      <!-- column-name description -->
+      <column type="gchararray"/>
+      <!-- column-name realval -->
+      <column type="gfloat"/>
+      <!-- column-name val -->
+      <column type="guint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">10mV</col>
+        <col id="1">0.009999999776482582</col>
+        <col id="2">0</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20mV</col>
+        <col id="1">0.019999999552965164</col>
+        <col id="2">1</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50mV</col>
+        <col id="1">0.05000000074505806</col>
+        <col id="2">2</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100mV</col>
+        <col id="1">0.10000000149011612</col>
+        <col id="2">3</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200mV</col>
+        <col id="1">0.20000000298023224</col>
+        <col id="2">4</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500mV</col>
+        <col id="1">0.5</col>
+        <col id="2">5</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1V</col>
+        <col id="1">1</col>
+        <col id="2">6</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2V</col>
+        <col id="1">2</col>
+        <col id="2">7</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">5V</col>
+        <col id="1">5</col>
+        <col id="2">8</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10V</col>
+        <col id="1">10</col>
+        <col id="2">9</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore_time">
+    <columns>
+      <!-- column-name description -->
+      <column type="gchararray"/>
+      <!-- column-name realval -->
+      <column type="gfloat"/>
+      <!-- column-name val -->
+      <column type="guint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">5ns</col>
+        <col id="1">4.9999999696126451e-09</col>
+        <col id="2">0</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10ns</col>
+        <col id="1">9.9999999392252903e-09</col>
+        <col id="2">1</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20ns</col>
+        <col id="1">1.9999999878450581e-08</col>
+        <col id="2">2</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50ns</col>
+        <col id="1">5.0000000584304871e-08</col>
+        <col id="2">3</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100ns</col>
+        <col id="1">1.0000000116860974e-07</col>
+        <col id="2">4</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200ns</col>
+        <col id="1">2.0000000233721948e-07</col>
+        <col id="2">5</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500ns</col>
+        <col id="1">4.9999999873762135e-07</col>
+        <col id="2">6</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1us</col>
+        <col id="1">9.9999999747524271e-07</col>
+        <col id="2">7</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2us</col>
+        <col id="1">1.9999999949504854e-06</col>
+        <col id="2">8</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">5us</col>
+        <col id="1">4.9999998736893758e-06</col>
+        <col id="2">9</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10us</col>
+        <col id="1">9.9999997473787516e-06</col>
+        <col id="2">10</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20us</col>
+        <col id="1">1.9999999494757503e-05</col>
+        <col id="2">11</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50us</col>
+        <col id="1">4.9999998736893758e-05</col>
+        <col id="2">12</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100us</col>
+        <col id="1">9.9999997473787516e-05</col>
+        <col id="2">13</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200us</col>
+        <col id="1">0.00019999999494757503</col>
+        <col id="2">14</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500us</col>
+        <col id="1">0.0005000000237487256</col>
+        <col id="2">15</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1ms</col>
+        <col id="1">0.0010000000474974513</col>
+        <col id="2">16</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2ms</col>
+        <col id="1">0.0020000000949949026</col>
+        <col id="2">17</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">5ms</col>
+        <col id="1">0.004999999888241291</col>
+        <col id="2">18</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10ms</col>
+        <col id="1">0.009999999776482582</col>
+        <col id="2">19</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20ms</col>
+        <col id="1">0.019999999552965164</col>
+        <col id="2">20</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50ms</col>
+        <col id="1">0.05000000074505806</col>
+        <col id="2">21</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100ms</col>
+        <col id="1">0.10000000149011612</col>
+        <col id="2">22</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200ms</col>
+        <col id="1">0.20000000298023224</col>
+        <col id="2">23</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500ms</col>
+        <col id="1">0.5</col>
+        <col id="2">24</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1s</col>
+        <col id="1">1</col>
+        <col id="2">25</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2s</col>
+        <col id="1">2</col>
+        <col id="2">26</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">5s</col>
+        <col id="1">5</col>
+        <col id="2">27</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">10s</col>
+        <col id="1">10</col>
+        <col id="2">28</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">20s</col>
+        <col id="1">20</col>
+        <col id="2">29</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">50s</col>
+        <col id="1">50</col>
+        <col id="2">30</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">100s</col>
+        <col id="1">100</col>
+        <col id="2">31</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">200s</col>
+        <col id="1">200</col>
+        <col id="2">32</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">500s</col>
+        <col id="1">500</col>
+        <col id="2">33</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkAdjustment" id="time_offset_adj">
+    <property name="upper">3000</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="trigger_level_adj">
+    <property name="upper">200</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkWindow" id="window_main">
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Hantek 2D72</property>
+    <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkDrawingArea" id="drawing_area">
+            <property name="width-request">1200</property>
+            <property name="height-request">300</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <signal name="draw" handler="draw_callback" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">5</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <!-- n-columns=2 n-rows=6 -->
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="row-spacing">3</property>
+                    <property name="column-spacing">3</property>
+                    <property name="row-homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Enable</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Coupling</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Probe</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Scale</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Offset</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">BW Limit</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="channel_enable_switch_ch1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <signal name="state-set" handler="on_channel_enable" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="channel_offset_spinbutton_ch1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">channel_offset_adj_ch1</property>
+                        <property name="digits">4</property>
+                        <property name="numeric">True</property>
+                        <property name="value">1</property>
+                        <signal name="value-changed" handler="on_channel_offset" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="channel_bwlimit_switch_ch1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <signal name="state-set" handler="on_channel_bwlimit" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="channel_coupling_combobox_ch1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="1" translatable="yes">DC</item>
+                          <item id="0" translatable="yes">AC</item>
+                          <item id="2" translatable="yes">GND</item>
+                        </items>
+                        <signal name="changed" handler="on_channel_coupling" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="channel_scale_combobox_ch1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="model">liststore_1x</property>
+                        <property name="id-column">2</property>
+                        <signal name="changed" handler="on_channel_scale" swapped="no"/>
+                        <child>
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">0</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="channel_probe_combobox_ch1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="0" translatable="yes">1X</item>
+                          <item id="1" translatable="yes">10X</item>
+                          <item id="2" translatable="yes">100X</item>
+                          <item id="3" translatable="yes">1000X</item>
+                        </items>
+                        <signal name="changed" handler="on_channel_probe" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Channel 1</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <!-- n-columns=2 n-rows=6 -->
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="row-spacing">3</property>
+                    <property name="column-spacing">3</property>
+                    <property name="row-homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Enable</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Coupling</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Probe</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Scale</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Offset</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">BW Limit</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="channel_enable_switch_ch2">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <signal name="state-set" handler="on_channel_enable" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="channel_offset_spinbutton_ch2">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">channel_offset_adj_ch2</property>
+                        <property name="digits">4</property>
+                        <property name="numeric">True</property>
+                        <property name="value">1</property>
+                        <signal name="value-changed" handler="on_channel_offset" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="channel_bwlimit_switch_ch2">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <signal name="state-set" handler="on_channel_bwlimit" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="channel_coupling_combobox_ch2">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="1" translatable="yes">DC</item>
+                          <item id="0" translatable="yes">AC</item>
+                          <item id="2" translatable="yes">GND</item>
+                        </items>
+                        <signal name="changed" handler="on_channel_coupling" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="channel_probe_combobox_ch2">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="0" translatable="yes">1X</item>
+                          <item id="1" translatable="yes">10X</item>
+                          <item id="2" translatable="yes">100X</item>
+                          <item id="3" translatable="yes">1000X</item>
+                        </items>
+                        <signal name="changed" handler="on_channel_probe" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="channel_scale_combobox_ch2">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="model">liststore_1x</property>
+                        <property name="id-column">2</property>
+                        <signal name="changed" handler="on_channel_scale" swapped="no"/>
+                        <child>
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">0</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Channel 2</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <!-- n-columns=2 n-rows=2 -->
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="row-spacing">3</property>
+                    <property name="column-spacing">3</property>
+                    <property name="row-homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Scale</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Offset</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="time_offset_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">time_offset_adj</property>
+                        <property name="digits">10</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_time_offset" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="time_scale_combobox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="model">liststore_time</property>
+                        <property name="id-column">2</property>
+                        <signal name="changed" handler="on_time_scale" swapped="no"/>
+                        <child>
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">0</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Time</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <!-- n-columns=2 n-rows=5 -->
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="row-spacing">3</property>
+                    <property name="column-spacing">3</property>
+                    <property name="row-homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Source</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Slope</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Mode</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Level</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="trigger_source_combobox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="0" translatable="yes">CH1</item>
+                          <item id="1" translatable="yes">CH2</item>
+                        </items>
+                        <signal name="changed" handler="on_trigger_source" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="trigger_slope_combobox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="0" translatable="yes">Rising</item>
+                          <item id="1" translatable="yes">Falling</item>
+                          <item id="2" translatable="yes">Both</item>
+                        </items>
+                        <signal name="changed" handler="on_trigger_slope" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="trigger_mode_combobox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="0" translatable="yes">Auto</item>
+                          <item id="1" translatable="yes">Normal</item>
+                          <item id="2" translatable="yes">Single</item>
+                        </items>
+                        <signal name="changed" handler="on_trigger_mode" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="trigger_level_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">trigger_level_adj</property>
+                        <property name="climb-rate">1</property>
+                        <property name="digits">4</property>
+                        <signal name="value-changed" handler="on_trigger_level" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label">Start</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="image">Start1</property>
+                        <property name="always-show-image">True</property>
+                        <signal name="clicked" handler="on_start" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Stop</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="image">Stop1</property>
+                        <property name="always-show-image">True</property>
+                        <signal name="clicked" handler="on_stop" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Trigger</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">none</property>
+                <child>
+                  <!-- n-columns=2 n-rows=10 -->
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Type</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Frequency</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Amplitude</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Offset</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Square Duty</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Ramp Duty</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Trap Rise Duty</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Trap High Duty</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">7</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Trap Fall Duty</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">8</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Start</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="image">Start2</property>
+                        <property name="always-show-image">True</property>
+                        <signal name="clicked" handler="on_awg_start" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">9</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="awg_type_combobox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <items>
+                          <item id="0" translatable="yes">Square</item>
+                          <item id="1" translatable="yes">Ramp</item>
+                          <item id="2" translatable="yes">Sin</item>
+                          <item id="3" translatable="yes">Trap</item>
+                          <item id="4" translatable="yes">Arb1</item>
+                          <item id="5" translatable="yes">Arb2</item>
+                          <item id="6" translatable="yes">Arb3</item>
+                          <item id="7" translatable="yes">Arb4</item>
+                        </items>
+                        <signal name="changed" handler="on_awg_type" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_amplitude_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_amp_adj</property>
+                        <property name="digits">2</property>
+                        <signal name="value-changed" handler="on_awg_amp" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_offset_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_off_adj</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_awg_offset" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_squareduty_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_square_duty</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_awg_square_duty" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_rampduty_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_ramp_duty</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_awg_ramp_duty" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_trapriseduty_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_trap_rise_duty</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_awg_trap_duty" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_traphighduty_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_trap_high_duty</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_awg_trap_duty" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">7</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_trapfallduty_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_trap_fall_duty</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_awg_trap_duty" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">8</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Stop</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="image">Stop2</property>
+                        <property name="always-show-image">True</property>
+                        <signal name="clicked" handler="on_awg_stop" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">9</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="awg_frequency_spinbutton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">awg_freq_adj</property>
+                        <property name="numeric">True</property>
+                        <signal name="value-changed" handler="on_awg_freq" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">AWG</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkRadioButton" id="scope_radio">
+                    <property name="label" translatable="yes">Scope</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw-indicator">True</property>
+                    <signal name="clicked" handler="on_radio" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="awg_radio">
+                    <property name="label" translatable="yes">AWG</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw-indicator">True</property>
+                    <property name="group">scope_radio</property>
+                    <signal name="clicked" handler="on_radio" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="dmm_radio">
+                    <property name="label" translatable="yes">DMM</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">False</property>
+                    <property name="active">True</property>
+                    <property name="draw-indicator">True</property>
+                    <property name="group">scope_radio</property>
+                    <signal name="clicked" handler="on_radio" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <!-- n-columns=2 n-rows=1 -->
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkButton" id="capture_button">
+                    <property name="label" translatable="yes">Capture</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <signal name="clicked" handler="on_capture_button_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="capture_samples_spinbutton">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="adjustment">capture_samples_adj</property>
+                    <signal name="value-changed" handler="on_capture_samples" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
