@@ -773,9 +773,9 @@ void on_awg_trap_duty(GtkSpinButton *spin_button, GtkScrollType scroll, gpointer
     float val_high = gtk_spin_button_get_value(awg_traphighduty_spinbutton);
     float val_fall = gtk_spin_button_get_value(awg_trapfallduty_spinbutton);
 
-    cur_config->awg_trapriseduty = val_rise;
-    cur_config->awg_traphighduty = val_high;
-    cur_config->awg_trapfallduty = val_fall;
+    if      ( spin_button == awg_trapriseduty_spinbutton ) cur_config->awg_trapriseduty = val_rise;
+    else if ( spin_button == awg_traphighduty_spinbutton ) cur_config->awg_traphighduty = val_high;
+    else if ( spin_button == awg_trapfallduty_spinbutton ) cur_config->awg_trapfallduty = val_fall;
 
     command.idx     = 0x00;
     command.boh     = 0x0A;
