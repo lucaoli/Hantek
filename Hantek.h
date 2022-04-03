@@ -26,7 +26,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-#include <libusb-1.0/libusb.h>
+#include <libusb.h>
 #include <sys/fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>

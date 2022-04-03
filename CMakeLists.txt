@@ -24,10 +24,10 @@ add_link_options(-rdynamic)
 pkg_search_module(LIBUSB REQUIRED libusb-1.0)
 pkg_search_module(LIBGTK REQUIRED gtk+-3.0)
 
-include_directories(${LIBGTK_INCLUDE_DIRS})
+include_directories(${LIBUSB_INCLUDE_DIRS} ${LIBGTK_INCLUDE_DIRS})
 
 add_custom_command(OUTPUT Hantek.glade COMMAND cp ${CMAKE_SOURCE_DIR}/Hantek.glade . DEPENDS ${CMAKE_SOURCE_DIR}/Hantek.glade)
 add_custom_target(Hantek_glade ALL DEPENDS Hantek.glade)
 
 add_executable(Hantek Hantek.c)
-target_link_libraries(Hantek ${LIBUSB_LIBRARIES} ${LIBGTK_LIBRARIES} m)
+target_link_libraries(Hantek ${LIBUSB_LINK_LIBRARIES} ${LIBGTK_LINK_LIBRARIES} m)
